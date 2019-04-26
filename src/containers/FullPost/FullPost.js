@@ -8,6 +8,7 @@ import {Badge} from "reactstrap";
 import {createComment, fetchComments} from "../../store/actions/commentsActions";
 import Comments from "../../components/Comments/Comments";
 import CommentForm from "../../components/CommentForm/CommentForm";
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 class FullPost extends Component {
     componentDidMount() {
@@ -16,21 +17,23 @@ class FullPost extends Component {
     };
 
     render() {
-        if (!this.props.post) {
-            return <div>Loading...</div>
+        if (this.props.loading || !this.props.post) {
+            return <Spinner />
         }
+
+        console.log(this.props.loading);
 
         return (
             <Fragment>
                 <div className="Post clearfix">
-                    <ImageThumbnail image={this.props.post.image} />
+                    <ImageThumbnail image={this.props.post.image || null} />
                     <h2 className="Title">{this.props.post.title}</h2>
                     <p className="Author">Author: <Badge color="dark" >{this.props.post.user.username}</Badge></p>
 
                     <p className="Description">{this.props.post.description}</p>
                 </div>
-                {this.props.comments.length !== 0 ? <Comments comments={this.props.comments} /> : <h3 className="NoComment">No comments for this post. Be the first !</h3>}
                 {this.props.user ? <CommentForm submit={this.props.createComment} postId={this.props.match.params.id} /> : null}
+                {this.props.comments.length !== 0 ? <Comments comments={this.props.comments} /> : <h3 className="NoComment">No comments for this post. Be the first !</h3>}
             </Fragment>
         );
     }
@@ -39,7 +42,8 @@ class FullPost extends Component {
 const mapStateToProps = state => ({
     post: state.posts.post,
     comments: state.comments.comments,
-    user: state.users.user
+    user: state.users.user,
+    loading: state.posts.loading
 });
 
 const mapDispatchToProps = dispatch => ({

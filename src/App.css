@@ -1,3 +1,7 @@
+.App {
+    position: relative;
+}
+
 .Login, .Register {
     background: #fff;
     padding: 35px;

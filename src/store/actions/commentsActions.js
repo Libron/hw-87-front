@@ -1,4 +1,5 @@
 import axios from '../../axios-api';
+import {NotificationManager} from 'react-notifications';
 
 export const FETCH_COMMENTS_REQUEST = 'FETCH_COMMENTS_REQUEST';
 export const FETCH_COMMENTS_SUCCESS = 'FETCH_COMMENTS_SUCCESS';
@@ -42,8 +43,12 @@ export const createComment = commentData => {
 
         dispatch(createCommentRequest());
         return axios.post('/comments', commentData,config).then(
-            (response) => dispatch(createCommentSuccess(response.data)),
+            (response) => {
+                NotificationManager.success('Successfully added comment');
+                dispatch(createCommentSuccess(response.data))
+            },
             error => {
+                NotificationManager.error('Something went wrong');
                 if (error.response) {
                     dispatch(createCommentFailure(error.response.data))
                 } else {

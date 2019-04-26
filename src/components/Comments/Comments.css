@@ -7,8 +7,10 @@
     margin-bottom: 25px;
 }
 .Comments .Item {
+    position: relative;
     width: 75%;
     margin-bottom: 15px;
+    padding-right: 30px;
 }
 
 .Comments .list-group-item:nth-child(even) {
@@ -24,4 +26,25 @@
     color: white;
     background: #ff7043;
     border: none;
+}
+
+.Comments .Item .Remove {
+    display: block;
+    background: #b71c1c;
+    outline: none;
+    width: 25px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-color: white;
+}
+
+
+.Comments .Item .Remove p {
+    color: white;
+writing-mode: vertical-rl;
+    margin: 0 0 0 -7px;
+    padding: 0;
+    text-orientation: mixed;
 }

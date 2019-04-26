@@ -1,5 +1,6 @@
 import axios from '../../axios-api';
 import {push} from 'connected-react-router';
+import {NotificationManager} from "react-notifications";
 
 export const FETCH_POSTS_REQUEST = 'FETCH_POSTS_REQUEST';
 export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS';
@@ -73,10 +74,12 @@ export const createPost = postData => {
 
         return axios.post('/posts', postData, config).then(
             response =>{
+                NotificationManager.success('Successfully created post');
                 dispatch(createPostSuccess(response.data));
                 dispatch(push('/'));
             },
             error => {
+                NotificationManager.error('Something went wrong');
                 if (error.response) {
                     dispatch(createPostFailure(error.response.data))
                 } else {

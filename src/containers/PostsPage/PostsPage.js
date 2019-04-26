@@ -7,6 +7,7 @@ import Moment from "react-moment";
 import {NavLink as RouterNavLink} from 'react-router-dom';
 
 import './PostsPage.css';
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 class PostsPage extends Component {
     componentDidMount() {
@@ -14,8 +15,8 @@ class PostsPage extends Component {
     }
 
     render() {
-        if (!this.props.posts) {
-            return <div>Loading...</div>
+        if (this.props.loading || !this.props.posts) {
+            return  <Spinner />
         }
 
         return (
@@ -37,7 +38,8 @@ class PostsPage extends Component {
 }
 
 const mapStateToProps = state => ({
-    posts: state.posts.posts
+    posts: state.posts.posts,
+    loading: state.posts.loading
 });
 
 const mapDispatchToProps = dispatch => ({

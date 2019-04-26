@@ -10,11 +10,13 @@ import {logoutUser} from "./store/actions/usersActions";
 import PostsPage from "./containers/PostsPage/PostsPage";
 import NewPost from "./containers/NewPost/NewPost";
 import FullPost from "./containers/FullPost/FullPost";
+import {NotificationContainer} from "react-notifications";
 
 class App extends Component {
     render() {
         return (
             <div className="App">
+                <NotificationContainer/>
                 <header>
                     <Toolbar user={this.props.user} logout={this.props.logoutUser}/>
                 </header>
