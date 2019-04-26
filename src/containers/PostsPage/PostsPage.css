@@ -1,0 +1,31 @@
+h1 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.Posts {
+    margin-bottom: 30px;
+}
+
+.Posts .Item {
+    padding: 15px;
+    height: auto;
+    margin-bottom: 10px;
+    color: inherit;
+}
+
+.Posts .Item img {
+    margin-right: 15px;
+    float: left;
+    width: 100px;
+    height: 100px;
+}
+
+.Posts .Author {
+    font-size: 15px;
+}
+
+.Posts .Item:hover {
+    text-decoration: none;
+    background: #efebe9;
+}

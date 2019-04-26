@@ -9,6 +9,7 @@ import Login from "./containers/Login/Login";
 import {logoutUser} from "./store/actions/usersActions";
 import PostsPage from "./containers/PostsPage/PostsPage";
 import NewPost from "./containers/NewPost/NewPost";
+import FullPost from "./containers/FullPost/FullPost";
 
 class App extends Component {
     render() {
@@ -22,6 +23,7 @@ class App extends Component {
                         <Route path="/" exact component={PostsPage}/>
                         <Route path="/posts" exact component={PostsPage}/>
                         <Route path="/posts/new" exact component={NewPost}/>
+                        <Route path="/posts/:id" exact component={FullPost}/>
                         <Route path="/register" exact component={Register}/>
                         <Route path="/login" exact component={Login}/>
                     </Switch>

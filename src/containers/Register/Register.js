@@ -1,5 +1,5 @@
-import React, {Component, Fragment} from 'react';
-import {Alert, Button, Col, Form, FormGroup} from "reactstrap";
+import React, {Component} from 'react';
+import {Alert, Button, Form, FormGroup} from "reactstrap";
 import {registerUser} from "../../store/actions/usersActions";
 import {connect} from "react-redux";
 import FormElement from "../../components/UI/Form/FormElement";
@@ -27,7 +27,7 @@ class Register extends Component {
 
     render() {
         return (
-            <Fragment>
+            <div className="Register">
                 <h2>Register New User</h2>
                 {this.props.error && this.props.error.global && (
                     <Alert color="danger">
@@ -58,12 +58,10 @@ class Register extends Component {
                     />
 
                     <FormGroup row>
-                        <Col sm={{offset: 2, size: 10}}>
-                            <Button type="submit" color="primary">Register</Button>
-                        </Col>
+                        <Button type="submit" color="success" size="lg" block style={{marginTop: '15px'}}>Register</Button>
                     </FormGroup>
                 </Form>
-            </Fragment>
+            </div>
         );
     }
 }

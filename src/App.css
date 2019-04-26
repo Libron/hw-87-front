@@ -1,0 +1,13 @@
+.Login, .Register {
+    background: #fff;
+    padding: 35px;
+    width: 50%;
+    margin: 50px auto;
+    border-radius: 10px;
+}
+
+.Login h2, .Register h2 {
+    margin-bottom: 25px;
+    font-weight: bold;
+    text-align: center;
+}

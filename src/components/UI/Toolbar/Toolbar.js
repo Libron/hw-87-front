@@ -12,7 +12,7 @@ import AnonymousMenu from "./Menus/AnonymousMenu";
 
 const Toolbar = ({user, logout}) => {
   return (
-    <Navbar color="light" light expand="md">
+    <Navbar color="dark" dark expand="md">
       <NavbarBrand tag={RouterNavLink} to="/">Al-Jazeera Forum</NavbarBrand>
 
       <Nav className="ml-auto" navbar>

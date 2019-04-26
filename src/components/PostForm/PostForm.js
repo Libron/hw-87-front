@@ -70,7 +70,7 @@ class PostForm extends Component {
                     </Col>
                 </FormGroup>
                 <FormGroup row>
-                    <Col sm={{offset:2, size: 10}}>
+                    <Col sm={{offset:10, size: 10}}>
                         <Button type="submit" color="primary">Create New Post</Button>
                     </Col>
                 </FormGroup>

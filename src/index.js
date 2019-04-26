@@ -8,9 +8,11 @@ import {connectRouter, routerMiddleware, ConnectedRouter} from 'connected-react-
 import * as serviceWorker from './serviceWorker';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 import App from './App';
 import usersReducer from "./store/reducers/usersReducer";
 import postsReducer from "./store/reducers/postsReducer";
+import commentsReducer from "./store/reducers/commentsReducer";
 
 const saveToLocalStorage = state => {
     try {
@@ -21,7 +23,7 @@ const saveToLocalStorage = state => {
     }
 };
 
-const loadFromLocalStorage = () => {
+export const loadFromLocalStorage = () => {
     try {
         const serializedState = localStorage.getItem('state');
         if (serializedState === null) {
@@ -39,7 +41,8 @@ const history = createBrowserHistory();
 const rootReducer = combineReducers({
     router: connectRouter(history),
     users: usersReducer,
-    posts: postsReducer
+    posts: postsReducer,
+    comments: commentsReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

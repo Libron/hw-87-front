@@ -1,9 +1,12 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import connect from "react-redux/es/connect/connect";
 import {fetchPosts} from "../../store/actions/postsActions";
-import {ListGroup, ListGroupItem} from "reactstrap";
+import {Badge, ListGroup, ListGroupItem} from "reactstrap";
 import ImageThumbnail from "../../components/UI/ImageThumbnail/ImageThumbnail";
 import Moment from "react-moment";
+import {NavLink as RouterNavLink} from 'react-router-dom';
+
+import './PostsPage.css';
 
 class PostsPage extends Component {
     componentDidMount() {
@@ -17,15 +20,18 @@ class PostsPage extends Component {
 
         console.log(this.props.posts);
         return (
-            <ListGroup className="Posts">
-                {this.props.posts.map(post => (
-                    <ListGroupItem key={post._id}>
-                        <ImageThumbnail image={post.image} />
-                        <p>{post.title}</p>
-                        <span><Moment format="DD-MM-YYYY HH:MM">{post.datetime}</Moment></span> by <span>{post.author.username}</span>
+            <Fragment>
+                <h1>Posts <Badge color="info">{this.props.posts.length}</Badge></h1>
+                <ListGroup className="Posts">
+                    {this.props.posts.map(post => (
+                        <ListGroupItem  className="Item" tag={RouterNavLink} to={'/posts/' + post._id} key={post._id}>
+                            <ImageThumbnail image={post.image} />
+                            <p><i><Moment format="DD-MM-YYYY hh:mm a">{post.datetime}</Moment></i><b> by </b><Badge className="Author" color="dark">{post.user.username}</Badge></p>
+                            <p>{post.title}</p>
                         </ListGroupItem>
-                ))}
-            </ListGroup>
+                    ))}
+                </ListGroup>
+            </Fragment>
         );
     }
 }

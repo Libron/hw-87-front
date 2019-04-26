@@ -3,6 +3,8 @@ import PostForm from "../../components/PostForm/PostForm";
 import connect from "react-redux/es/connect/connect";
 import {createPost} from "../../store/actions/postsActions";
 
+import './NewPost.css';
+
 class NewPost extends Component {
     componentDidMount(){
         if (!this.props.user) {

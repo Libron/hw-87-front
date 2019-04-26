@@ -1,5 +1,5 @@
-import React, {Component, Fragment} from 'react';
-import {Alert, Button, Col, Form, FormGroup} from "reactstrap";
+import React, {Component} from 'react';
+import {Alert, Button,  Form, FormGroup} from "reactstrap";
 import FormElement from "../../components/UI/Form/FormElement";
 import {loginUser} from "../../store/actions/usersActions";
 import connect from "react-redux/es/connect/connect";
@@ -23,7 +23,7 @@ class Login extends Component {
 
     render() {
         return (
-            <Fragment>
+            <div className="Login">
                 <h2>Login</h2>
                 {this.props.error && (
                     <Alert color="danger">{this.props.error.error}</Alert>
@@ -50,13 +50,11 @@ class Login extends Component {
                     />
 
                     <FormGroup row>
-                        <Col sm={{offset: 2, size: 10}}>
-                            <Button type="submit" color="primary">Login</Button>
-                        </Col>
+                            <Button type="submit" color="primary" size="lg" block style={{marginTop: '15px'}}>Login</Button>
                     </FormGroup>
 
                 </Form>
-            </Fragment>
+            </div>
         );
     }
 }
