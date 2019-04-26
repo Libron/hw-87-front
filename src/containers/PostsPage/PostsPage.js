@@ -18,7 +18,6 @@ class PostsPage extends Component {
             return <div>Loading...</div>
         }
 
-        console.log(this.props.posts);
         return (
             <Fragment>
                 <h1>Posts <Badge color="info">{this.props.posts.length}</Badge></h1>
@@ -26,6 +25,7 @@ class PostsPage extends Component {
                     {this.props.posts.map(post => (
                         <ListGroupItem  className="Item" tag={RouterNavLink} to={'/posts/' + post._id} key={post._id}>
                             <ImageThumbnail image={post.image} />
+                            <p className="CommentsCount"><i>comments: </i><b>{post.count}</b></p>
                             <p><i><Moment format="DD-MM-YYYY hh:mm a">{post.datetime}</Moment></i><b> by </b><Badge className="Author" color="dark">{post.user.username}</Badge></p>
                             <p>{post.title}</p>
                         </ListGroupItem>
